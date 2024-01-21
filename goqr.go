@@ -16,9 +16,6 @@ func GenerateAndSave(url string, outputPath string, savePng bool) (string, error
 		return "Found error in generating QR code", err
 	}
 
-	// Print QR code to the console
-	QR := qrCode.ToSmallString(false)
-
 	if savePng {
 		// Save QR code as PNG file
 		err = savePNG(outputPath, qrCode.Image(256))
@@ -27,7 +24,7 @@ func GenerateAndSave(url string, outputPath string, savePng bool) (string, error
 		}
 	}
 
-	return QR, err
+	return qrCode.ToSmallString(false), err
 }
 
 // savePNG saves an image as a PNG file
