@@ -9,17 +9,19 @@ import (
 )
 
 // GenerateAndSave generates a QR code for the given URL and saves it as a PNG file.
-func GenerateAndSave(url, outputPath string) error {
+func GenerateAndSave(url string, outputPath string, savePng bool) error {
 	// Generate QR code
 	qrCode, err := qrcode.New(url, qrcode.Medium)
 	if err != nil {
 		return err
 	}
 
+	if savePng == true {
 	// Save QR code as PNG file
 	err = savePNG(outputPath, qrCode.Image(256))
 	if err != nil {
 		return err
+	}
 	}
 
 	return nil
