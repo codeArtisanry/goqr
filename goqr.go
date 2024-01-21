@@ -1,6 +1,7 @@
-package qrcodegen
+package goqr
 
 import (
+	"fmt"
 	"image"
 	"image/png"
 	"os"
@@ -11,17 +12,21 @@ import (
 // GenerateAndSave generates a QR code for the given URL and saves it as a PNG file.
 func GenerateAndSave(url string, outputPath string, savePng bool) error {
 	// Generate QR code
-	qrCode, err := qrcode.New(url, qrcode.Medium)
+	qrCode, err := qrcode.New(url, qrcode.High)
 	if err != nil {
 		return err
 	}
 
-	if savePng == true {
-	// Save QR code as PNG file
-	err = savePNG(outputPath, qrCode.Image(256))
-	if err != nil {
-		return err
-	}
+	// Print QR code to the console
+	fmt.Println("Generated QR Code:")
+	fmt.Println(qrCode.ToSmallString(false))
+
+	if savePng {
+		// Save QR code as PNG file
+		err = savePNG(outputPath, qrCode.Image(256))
+		if err != nil {
+			return err
+		}
 	}
 
 	return nil
