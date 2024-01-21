@@ -1,4 +1,4 @@
-package qrcodegen
+package goqr
 
 import (
 	"image"
