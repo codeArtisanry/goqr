@@ -37,6 +37,9 @@ func main() {
 	fmt.Printf("QR code saved as %s\n", outputPath)
 }
 ```
+Refer to the example folder for more details and usage.
+
+---
 
 ### License
 This project is licensed under the MIT License - see the LICENSE file for details.
